@@ -10,8 +10,7 @@ static IOHIDManagerRef hidManager = 0x0;
 void getProductDescription(IOHIDDeviceRef device, char* buf);
 int getIntDeviceProperty(IOHIDDeviceRef device, CFStringRef key);
 
-int main(void)
-{
+int main(void) {
     CFIndex numDevices;
     IOHIDDeviceRef * tIOHIDDeviceRefs = NULL;
 
@@ -37,8 +36,7 @@ int main(void)
     CFSetGetValues(deviceRefs, (const void **) devices);
 
      //lets iterate over the device list
-    for (int i = 0; i < numDevices; ++i)
-    {
+    for (int i = 0; i < numDevices; ++i) {
 
         //allocate a block of memory to get the product description.
         char *prodDescription = calloc(BUF_SIZE, sizeof(char));
