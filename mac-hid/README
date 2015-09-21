@@ -1,0 +1,13 @@
+Experiments with Native HID support for OSX
+
+Helpfull links
+
+Hid Class Interface:
+    https://developer.apple.com/library/mac/documentation/DeviceDrivers/Conceptual/HID/overview/overview.html#//apple_ref/doc/uid/TP40000970-CH203-CCHFBABI
+
+tn2187:
+    https://developer.apple.com/library/mac/technotes/tn2187/_index.html
+
+About kCFAllocatorDefault param:
+    http://lists.apple.com/archives/carbon-dev/2005/Jul/msg01027.html
+

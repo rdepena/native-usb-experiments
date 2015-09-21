@@ -1,0 +1,26 @@
+CC=gcc
+EMCC=emcc
+CFLAGS=-g
+LDFLAGS=
+SOURCES=Main.c
+EXECUTABLEDEST=bin
+EXECUTABLE=program.o
+JSEXECUTABLE=program.js
+MONITOREXTENSIONS=c h
+MONITORTOOL=nodemon
+LIBS=-framework IOKit -framework CoreFoundation
+
+build:
+	$(CC) $(CFLAGS) $(SOURCES) $^ $(LIBS) -o $(EXECUTABLEDEST)/$(EXECUTABLE)
+
+js:
+	$(EMCC) $(CFLAGS) $(SOURCES) -o $(EXECUTABLEDEST)/$(JSEXECUTABLE)
+
+clean:
+	rm $(EXECUTABLEDEST)/$(EXECUTABLE) $(EXECUTABLEDEST)/$(JSEXECUTABLE)
+
+watch:
+	$(MONITORTOOL) --exec "make build && ./$(EXECUTABLEDEST)/$(EXECUTABLE)" -e "$(MONITOREXTENSIONS)"
+
+watchjs:
+	$(MONITORTOOL) --exec "make js && node $(EXECUTABLEDEST)/$(JSEXECUTABLE)" -e "$(MONITOREXTENSIONS)"
