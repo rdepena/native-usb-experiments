@@ -9,6 +9,7 @@ JSEXECUTABLE=program.js
 MONITOREXTENSIONS=c h
 MONITORTOOL=nodemon
 LIBS=-framework IOKit -framework CoreFoundation
+DEBUGGER=lldb
 
 build:
 	$(CC) $(CFLAGS) $(SOURCES) $^ $(LIBS) -o $(EXECUTABLEDEST)/$(EXECUTABLE)
@@ -24,3 +25,6 @@ watch:
 
 watchjs:
 	$(MONITORTOOL) --exec "make js && node $(EXECUTABLEDEST)/$(JSEXECUTABLE)" -e "$(MONITOREXTENSIONS)"
+
+debug: build
+	$(DEBUGGER) $(EXECUTABLEDEST)/$(EXECUTABLE)

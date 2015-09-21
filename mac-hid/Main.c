@@ -73,15 +73,14 @@ int getIntDeviceProperty(IOHIDDeviceRef device, CFStringRef key) {
 void getProductDescription(IOHIDDeviceRef device, char* buf) {
     CFStringRef str;
     str = IOHIDDeviceGetProperty(device, CFSTR(kIOHIDProductKey));
-    CFIndex str_len = CFStringGetLength(str);
+    CFIndex strLen = CFStringGetLength(str);
 
     CFRange range;
     range.location = 0;
-    range.length = ((size_t)str_len > BUF_SIZE)? BUF_SIZE: (size_t)str_len;
-    CFIndex used_buf_len;
-    CFIndex chars_copied;
+    range.length = ((size_t)strLen > BUF_SIZE)? BUF_SIZE: (size_t)strLen;
+    CFIndex usedBufLen;
     buf[0] = 0;
 
     CFStringGetBytes(str, range, kCFStringEncodingUTF8, (char)'?', FALSE, (UInt8*)buf,
-        BUF_SIZE, &used_buf_len);
+        BUF_SIZE, &usedBufLen);
 }
